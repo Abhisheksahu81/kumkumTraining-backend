@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use('/admission' , admissionRoute)
 
-app.get('/test', async(req, res)=>{
+app.get('/', async(req, res)=>{
    res.json({"Message ": "Running Successfully."});
 })
 
