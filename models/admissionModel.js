@@ -1,42 +1,66 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const admissionSchema = new mongoose.Schema({
-  aadhaar: {
+  name: {
+    type: String,
+    required: true,
+  },
+  fatherName: {
+    type: String,
+    required: true,
+  },
+  courseName: {
+    type: String,
+    required: true,
+  },
+  fees: {
+    type: Number,
+    required: true,
+  },
+  aadhar: {
     type: String,
     required: true,
     unique: true,
-    minlength: 12,
-    maxlength: 12
   },
-  name: {
-    type: String,
-    required: true
+  verified: {
+    type: Boolean,
+    default: false,
   },
-  fathersName: {
-    type: String,
-    required: true
-  },
-  address: {
-    type: String,
-    required: true
-  },
-  fees : {
-    type : Number,
-    required :true,
-  },
-  mobileNumber: {
+  phoneNumber: {
     type: String,
     required: true,
-    minlength: 10,
-    maxlength: 10
   },
-  course: {
+  session: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
+  courseDuration: {
+    type: String,
+    required: true,
+  },
+  grade: {
+    type: String,
+    required: true,
+  },
+  percentage: {
+    type: Number,
+    required: true,
+  },
+  dateOfIssue: {
+    type: Date,
+    default: Date.now,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 }, {
-  timestamps: true
+  timestamps: {
+    createdAt: 'createdAt',  // Automatically set the creation timestamp
+    updatedAt: 'dateOfIssue'  // Automatically update this field on document update
+  }
 });
 
-export const Admission = mongoose.model('Admission', admissionSchema);
+const Admission = mongoose.model('Admission', admissionSchema);
 
+module.exports = Admission;
