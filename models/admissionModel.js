@@ -20,6 +20,10 @@ const admissionSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  fees : {
+    type : Number,
+    required :true,
+  },
   mobileNumber: {
     type: String,
     required: true,

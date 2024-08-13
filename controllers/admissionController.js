@@ -13,10 +13,10 @@ export const getAllAdmissions = async (req, res) => {
 
 export const createAdmission = async (req, res) => {
     try {
-        const { aadhaar, name, fathersName, address, mobileNumber, course } = req.body;
+        const { aadhaar, name, fathersName, address,fees, mobileNumber, course } = req.body;
 
        
-        if (!aadhaar || !name || !fathersName || !address || !mobileNumber || !course) {
+        if (!aadhaar || !name || !fathersName|| !fees || !address || !mobileNumber || !course) {
             return res.status(400).json({ error: "All fields are required." });
         }
 
@@ -30,6 +30,7 @@ export const createAdmission = async (req, res) => {
             name,
             fathersName,
             address,
+            fees,
             mobileNumber,
             course
         });
