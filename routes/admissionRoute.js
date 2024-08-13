@@ -40,6 +40,26 @@ router.route('/admissions/:id?')
   });
 
 
+  // Route to get admission by aadhar
+router.get('/searchByAadhar', async (req, res) => {
+  try {
+    const { aadhar } = req.query; // Get aadhar from query parameters
+
+    // Find all admissions with the specified aadhar
+    const admissions = await Admission.find({ aadhar });
+
+    if (admissions.length === 0) {
+      return res.status(404).json({ message: 'No admissions found with the given aadhar.' });
+    }
+
+    // Return the found admissions
+    res.status(200).json(admissions);
+  } catch (error) {
+    console.error('Error fetching admissions by aadhar:', error.message);
+    res.status(500).json({ message: 'Error fetching admissions', error: error.message });
+  }
+});
+
 
 router.delete('/all', async (req, res) => {
   try {
