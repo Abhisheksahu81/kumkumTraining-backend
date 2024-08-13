@@ -40,16 +40,16 @@ router.route('/admissions/:id?')
   });
 
 
-  // Route to get admission by aadhar
+// Route to get admission by aadhar where verified is true
 router.get('/searchByAadhar', async (req, res) => {
   try {
     const { aadhar } = req.query; // Get aadhar from query parameters
 
-    // Find all admissions with the specified aadhar
-    const admissions = await Admission.find({ aadhar });
+    // Find all admissions with the specified aadhar and where verified is true
+    const admissions = await Admission.find({ aadhar, verified: true });
 
     if (admissions.length === 0) {
-      return res.status(404).json({ message: 'No admissions found with the given aadhar.' });
+      return res.status(404).json({ message: 'No verified admissions found with the given aadhar.' });
     }
 
     // Return the found admissions
