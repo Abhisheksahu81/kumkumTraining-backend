@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose  from 'mongoose';
 
 const admissionSchema = new mongoose.Schema({
   name: {
@@ -7,7 +7,7 @@ const admissionSchema = new mongoose.Schema({
   },
   fatherName: {
     type: String,
-    required: true,
+    // required: true,
   },
   courseName: {
     type: String,
@@ -15,7 +15,7 @@ const admissionSchema = new mongoose.Schema({
   },
   fees: {
     type: Number,
-    required: true,
+    // required: true,
   },
   aadhar: {
     type: String,
@@ -27,23 +27,23 @@ const admissionSchema = new mongoose.Schema({
   },
   phoneNumber: {
     type: String,
-    required: true,
+    // required: true,
   },
   session: {
     type: String,
-    required: true,
+    // required: true,
   },
   courseDuration: {
     type: String,
-    required: true,
+    // required: true,
   },
   grade: {
     type: String,
-    required: true,
+    // required: true,
   },
   percentage: {
     type: Number,
-    required: true,
+    // required: true,
   },
   dateOfIssue: {
     type: Date,
@@ -60,6 +60,4 @@ const admissionSchema = new mongoose.Schema({
   }
 });
 
-const Admission = mongoose.model('Admission', admissionSchema);
-
-module.exports = Admission;
+export const Admission = mongoose.model('Admission', admissionSchema);
