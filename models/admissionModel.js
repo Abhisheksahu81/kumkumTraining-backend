@@ -20,7 +20,6 @@ const admissionSchema = new mongoose.Schema({
   aadhar: {
     type: String,
     required: true,
-    unique: true,
   },
   verified: {
     type: Boolean,
