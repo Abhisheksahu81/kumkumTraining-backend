@@ -29,7 +29,6 @@ app.post('/fix-duplicate-error', async (req, res) => {
     const collection = mongoose.connection.collection('admissions');
     
     // Drop the unique index on the `aadhar` field
-    await collection.dropIndex('aadhar_1');
     await collection.dropIndex('aadhaar_1');
 
     res.status(200).json({ message: 'Unique index on aadhar field removed successfully.' });
