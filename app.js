@@ -4,6 +4,7 @@ import connectDB from './config/db.js';
 import { admissionRoute } from './routes/admissionRoute.js';
 import { certificateRoute } from './routes/certificateRoute.js';
 import cors from 'cors';
+import mongoose from 'mongoose';
 
 dotenv.config();
 
@@ -21,6 +22,21 @@ app.use(express.json());
 
 app.use('/admission', admissionRoute);
 app.use('/certificate', certificateRoute);
+
+
+app.post('/fix-duplicate-error', async (req, res) => {
+  try {
+    const collection = mongoose.connection.collection('admissions');
+    
+    // Drop the unique index on the `aadhar` field
+    await collection.dropIndex('aadhar_1');
+    await collection.dropIndex('aadhaar_1');
+
+    res.status(200).json({ message: 'Unique index on aadhar field removed successfully.' });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to remove unique index on aadhar field.', error });
+  }
+});
 
 app.get('/', async (req, res) => {
   res.json({ "Message": "Running Successfully." });
