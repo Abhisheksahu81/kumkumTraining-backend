@@ -1,4 +1,4 @@
-import mongoose  from 'mongoose';
+import mongoose from 'mongoose';
 
 const admissionSchema = new mongoose.Schema({
   name: {
@@ -7,7 +7,6 @@ const admissionSchema = new mongoose.Schema({
   },
   fatherName: {
     type: String,
-    // required: true,
   },
   courseName: {
     type: String,
@@ -15,7 +14,6 @@ const admissionSchema = new mongoose.Schema({
   },
   fees: {
     type: Number,
-    // required: true,
   },
   aadhar: {
     type: String,
@@ -27,23 +25,18 @@ const admissionSchema = new mongoose.Schema({
   },
   phoneNumber: {
     type: String,
-    // required: true,
   },
   session: {
     type: String,
-    // required: true,
   },
   courseDuration: {
     type: String,
-    // required: true,
   },
   grade: {
     type: String,
-    // required: true,
   },
   percentage: {
     type: Number,
-    // required: true,
   },
   dateOfIssue: {
     type: Date,
@@ -55,8 +48,8 @@ const admissionSchema = new mongoose.Schema({
   },
 }, {
   timestamps: {
-    createdAt: 'createdAt',  // Automatically set the creation timestamp
-    updatedAt: 'dateOfIssue'  // Automatically update this field on document update
+    createdAt: 'createdAt',
+    updatedAt: 'dateOfIssue'
   }
 });
 
